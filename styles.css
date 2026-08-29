@@ -1,0 +1,487 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #E74C3C;
+    --secondary: #2C3E50;
+    --accent: #F39C12;
+    --light: #ECF0F1;
+    --border: #BDC3C7;
+    --text: #2C3E50;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: var(--light);
+    color: var(--text);
+    overflow: hidden;
+}
+
+#app {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    position: relative;
+}
+
+.screen {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    background: white;
+    z-index: 1;
+    animation: slideIn 0.3s ease-out;
+}
+
+.screen.active {
+    display: flex;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Home Screen */
+#homeScreen {
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, var(--primary) 0%, #C0392B 100%);
+}
+
+.home-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.logo-section {
+    margin-bottom: 60px;
+}
+
+.logo {
+    font-size: 80px;
+    margin-bottom: 20px;
+}
+
+.logo-section h1 {
+    color: white;
+    font-size: 32px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.logo-section p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.btn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+.btn-primary {
+    background: white;
+    color: var(--primary);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn-small {
+    padding: 10px 15px;
+    font-size: 14px;
+}
+
+.btn-back {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 10px;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* Screen Header */
+.screen-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    background: white;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+    z-index: 10;
+}
+
+.screen-header h2 {
+    font-size: 20px;
+    flex: 1;
+    text-align: center;
+}
+
+/* Map Screen */
+#mapScreen {
+    flex-direction: column;
+}
+
+#map {
+    flex: 1;
+    z-index: 1;
+}
+
+.map-info {
+    display: none;
+    padding: 15px;
+    background: white;
+    border-top: 1px solid var(--border);
+    font-size: 14px;
+}
+
+.map-popup {
+    padding: 15px;
+}
+
+.map-popup h3 {
+    color: var(--primary);
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.map-popup p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.map-popup a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background: var(--primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* Restaurants Screen */
+#restaurantsScreen {
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.restaurants-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px;
+}
+
+.latest-article-section {
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--accent);
+}
+
+.latest-article-section h3 {
+    color: var(--primary);
+    margin-bottom: 12px;
+    font-size: 16px;
+}
+
+.latest-article {
+    background: var(--light);
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent);
+}
+
+.latest-article img {
+    width: 100%;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.latest-article h4 {
+    color: var(--primary);
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.latest-article p {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.latest-article a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* Filters */
+.filters-section {
+    background: var(--light);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.filter-group label {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--secondary);
+}
+
+.filter-group select {
+    padding: 10px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    font-size: 14px;
+    background: white;
+    cursor: pointer;
+}
+
+.restaurants-list {
+    display: grid;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.restaurant-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.restaurant-card:active {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.restaurant-card-header {
+    display: flex;
+    gap: 12px;
+    padding: 12px;
+}
+
+.restaurant-card-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 6px;
+    object-fit: cover;
+    background: var(--light);
+}
+
+.restaurant-card-content {
+    flex: 1;
+}
+
+.restaurant-card h4 {
+    color: var(--primary);
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.restaurant-card .zone {
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.restaurant-card p {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.restaurant-card .tags {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+}
+
+.tag {
+    display: inline-block;
+    background: var(--light);
+    color: var(--secondary);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    max-width: 500px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #999;
+}
+
+.modal h2 {
+    color: var(--primary);
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.install-instructions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.install-step {
+    background: var(--light);
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent);
+}
+
+.install-step h3 {
+    color: var(--primary);
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.install-step p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+}
+
+.install-step ol, .install-step ul {
+    margin-left: 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+.install-step li {
+    margin: 5px 0;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .logo {
+        font-size: 60px;
+    }
+
+    .logo-section h1 {
+        font-size: 24px;
+    }
+
+    .btn {
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+}
+
+/* Loading */
+.loading {
+    text-align: center;
+    padding: 20px;
+    color: #999;
+}
+
+.loading::after {
+    content: '';
+    animation: dots 1.5s steps(3, end) infinite;
+}
+
+@keyframes dots {
+    0%, 20% { content: '.'; }
+    40% { content: '..'; }
+    60%, 100% { content: '...'; }
+}

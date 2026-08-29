@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#E74C3C">
+    <meta name="description" content="Descubre los mejores bares de tapas en Sevilla">
+    <title>De Tapas con Chencho</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍷</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><text y='90' x='50' font-size='160'>🍷</text></svg>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Pantalla de inicio -->
+        <div id="homeScreen" class="screen active">
+            <div class="home-container">
+                <div class="logo-section">
+                    <div class="logo">🍷</div>
+                    <h1>De Tapas con Chencho</h1>
+                    <p>Descubre los mejores bares de Sevilla</p>
+                </div>
+                <div class="button-container">
+                    <button class="btn btn-primary" onclick="goToMap()">
+                        <span class="icon">🗺️</span>
+                        <span>Mapa</span>
+                    </button>
+                    <button class="btn btn-primary" onclick="goToRestaurants()">
+                        <span class="icon">🍽️</span>
+                        <span>Restaurantes</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pantalla de Mapa -->
+        <div id="mapScreen" class="screen">
+            <div class="screen-header">
+                <button class="btn-back" onclick="goHome()">← Atrás</button>
+                <h2>Mapa de Bares</h2>
+                <div></div>
+            </div>
+            <div id="map"></div>
+            <div id="mapInfo" class="map-info"></div>
+        </div>
+
+        <!-- Pantalla de Restaurantes -->
+        <div id="restaurantsScreen" class="screen">
+            <div class="screen-header">
+                <button class="btn-back" onclick="goHome()">← Atrás</button>
+                <h2>Restaurantes</h2>
+                <div></div>
+            </div>
+
+            <div class="restaurants-content">
+                <!-- Último artículo -->
+                <div id="latestArticle" class="latest-article-section">
+                    <h3>📰 Última publicación</h3>
+                    <div id="latestArticleContent" class="latest-article"></div>
+                </div>
+
+                <!-- Filtros -->
+                <div class="filters-section">
+                    <div class="filter-group">
+                        <label>Zona:</label>
+                        <select id="zoneFilter" onchange="filterRestaurants()">
+                            <option value="">Todas las zonas</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Categoría:</label>
+                        <select id="categoryFilter" onchange="filterRestaurants()">
+                            <option value="">Todas las categorías</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-small" onclick="clearFilters()">Limpiar filtros</button>
+                </div>
+
+                <!-- Listado de restaurantes -->
+                <div id="restaurantsList" class="restaurants-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de instalación -->
+    <div id="installModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeInstallModal()">×</button>
+            <h2>📱 Instala esta app</h2>
+            <div id="installInstructions"></div>
+            <button class="btn btn-primary" onclick="closeInstallModal()">Entendido</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
