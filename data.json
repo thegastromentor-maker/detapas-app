@@ -1,0 +1,30 @@
+{
+  "points": [
+    {"id": 1, "title": "El Agua en Vino", "address": "Calle San Jorge, 9", "lat": 37.3852542, "lng": -6.0040651, "zone": "Sevilla (Triana)", "cuisines": ["Cocina tradicional", "Tapas y cocina sevillana"], "specialties": ["Vinos y bodega"], "url": "https://www.detapasconchencho.es/", "image": "", "features": []},
+    {"id": 2, "title": "Bar El Rinconcillo", "address": "Calle Gerona, 40", "lat": 37.3900, "lng": -5.9850, "zone": "Sevilla (Centro)", "cuisines": ["Tapas y cocina sevillana"], "specialties": ["Jamón ibérico", "Vinos"], "url": "https://www.detapasconchencho.es/", "image": "", "features": ["Terraza"]},
+    {"id": 3, "title": "Casa Lucio", "address": "Plaza Nueva, 5", "lat": 37.3941, "lng": -5.9884, "zone": "Sevilla (Centro)", "cuisines": ["Cocina tradicional"], "specialties": ["Rabo de toro", "Salmorejo"], "url": "https://www.detapasconchencho.es/", "image": "", "features": []},
+    {"id": 4, "title": "Eslabón Perdido", "address": "Avenida Constitución, 12", "lat": 37.3866, "lng": -5.9823, "zone": "Sevilla (Centro)", "cuisines": ["Tapas y cocina sevillana"], "specialties": ["Atún", "Gambas"], "url": "https://www.detapasconchencho.es/", "image": "", "features": []},
+    {"id": 5, "title": "La Carboná", "address": "Calle Levíes, 40", "lat": 37.3886, "lng": -5.9842, "zone": "Sevilla (Triana)", "cuisines": ["Cocina tradicional"], "specialties": ["Espetos", "Boquerones"], "url": "https://www.detapasconchencho.es/", "image": "", "features": ["Terraza"]},
+    {"id": 6, "title": "Bar Las Teresas", "address": "Calle Santa Teresa, 2", "lat": 37.3880, "lng": -5.9890, "zone": "Sevilla (Triana)", "cuisines": ["Tapas y cocina sevillana"], "specialties": ["Vinos", "Quesos"], "url": "https://www.detapasconchencho.es/", "image": "", "features": []},
+    {"id": 7, "title": "Casa Motrileño", "address": "Calle Betis, 31", "lat": 37.3850, "lng": -6.0000, "zone": "Sevilla (Triana)", "cuisines": ["Cocina mediterránea"], "specialties": ["Pescados", "Mariscos"], "url": "https://www.detapasconchencho.es/", "image": "", "features": ["Terraza"]},
+    {"id": 8, "title": "Eslabón Perdido 2", "address": "Calle Aire, 12", "lat": 37.3870, "lng": -5.9900, "zone": "Sevilla (Arenal)", "cuisines": ["Tapas y cocina sevillana"], "specialties": ["Atún rojo", "Boquerones"], "url": "https://www.detapasconchencho.es/", "image": "", "features": []},
+    {"id": 9, "title": "Bar Eslava", "address": "Calle Eslava, 3", "lat": 37.3920, "lng": -5.9920, "zone": "Sevilla (Centro)", "cuisines": ["Cocina creativa y de autor"], "specialties": ["Fusión", "Creatividad"], "url": "https://www.detapasconchencho.es/", "image": "", "features": ["Terraza"]},
+    {"id": 10, "title": "Contenedor 70", "address": "Calle Pureza, 70", "lat": 37.3840, "lng": -6.0030, "zone": "Sevilla (Triana)", "cuisines": ["Cocina creativa y de autor"], "specialties": ["Carne", "Vino"], "url": "https://www.detapasconchencho.es/", "image": "", "features": []},
+    {"id": 11, "title": "La Macarena", "address": "Calle Feria, 50", "lat": 37.3950, "lng": -5.9750, "zone": "Sevilla (Macarena)", "cuisines": ["Tapas y cocina sevillana"], "specialties": ["Espetos", "Montaditos"], "url": "https://www.detapasconchencho.es/", "image": "", "features": []},
+    {"id": 12, "title": "Casa Morales", "address": "Calle García de Vinuesa, 11", "lat": 37.3860, "lng": -5.9840, "zone": "Sevilla (Centro)", "cuisines": ["Cocina tradicional"], "specialties": ["Salmorejo", "Ensalada de remolacha"], "url": "https://www.detapasconchencho.es/", "image": "", "features": []},
+    {"id": 13, "title": "Bar Lauro", "address": "Calle Dos de Mayo, 26", "lat": 37.3900, "lng": -5.9700, "zone": "Sevilla (Los Remedios)", "cuisines": ["Tapas y cocina sevillana"], "specialties": ["Jamón", "Croquetas"], "url": "https://www.detapasconchencho.es/", "image": "", "features": ["Terraza"]},
+    {"id": 14, "title": "La Tranca", "address": "Calle Betis, 14", "lat": 37.3860, "lng": -6.0040, "zone": "Sevilla (Triana)", "cuisines": ["Cocina tradicional"], "specialties": ["Vinos", "Quesos"], "url": "https://www.detapasconchencho.es/", "image": "", "features": []},
+    {"id": 15, "title": "Azabache", "address": "Calle Zaragoza, 20", "lat": 37.3880, "lng": -5.9950, "zone": "Sevilla (Centro)", "cuisines": ["Cocina internacional"], "specialties": ["Tapas del mundo", "Cervezas"], "url": "https://www.detapasconchencho.es/", "image": "", "features": []},
+    {"id": 16, "title": "Bar Hermoso", "address": "Calle Feria, 100", "lat": 37.3960, "lng": -5.9700, "zone": "Sevilla (Macarena)", "cuisines": ["Tapas y cocina sevillana"], "specialties": ["Pringá", "Espetos"], "url": "https://www.detapasconchencho.es/", "image": "", "features": []},
+    {"id": 17, "title": "Las Setas de Carmona", "address": "Calle Aire, 40", "lat": 37.3870, "lng": -5.9880, "zone": "Sevilla (Arenal)", "cuisines": ["Cocina creativa y de autor"], "specialties": ["Setas", "Temporada"], "url": "https://www.detapasconchencho.es/", "image": "", "features": []},
+    {"id": 18, "title": "Casa Bigote", "address": "Calle Betis, 25", "lat": 37.3850, "lng": -6.0020, "zone": "Sevilla (Triana)", "cuisines": ["Pescados y mariscos"], "specialties": ["Mero", "Gambas"], "url": "https://www.detapasconchencho.es/", "image": "", "features": ["Terraza"]},
+    {"id": 19, "title": "Bálamo", "address": "Calle San Jorge, 20", "lat": 37.3850, "lng": -6.0050, "zone": "Sevilla (Triana)", "cuisines": ["Cocina creativa y de autor"], "specialties": ["Alta cocina", "Degustación"], "url": "https://www.detapasconchencho.es/", "image": "", "features": []},
+    {"id": 20, "title": "El Tintero", "address": "Calle Pureza, 50", "lat": 37.3840, "lng": -6.0000, "zone": "Sevilla (Triana)", "cuisines": ["Tapas y cocina sevillana"], "specialties": ["Vino tinto", "Quesos"], "url": "https://www.detapasconchencho.es/", "image": "", "features": []}
+  ],
+  "total": 20,
+  "zones": 6,
+  "categories": 9,
+  "features": 2,
+  "updated": "2026-08-30T00:00:00Z",
+  "note": "Esta es una versión de demostración con 20 restaurantes. Para obtener todos los 678, GitHub Actions descargará los datos automáticamente cada día a las 2 AM UTC."
+}

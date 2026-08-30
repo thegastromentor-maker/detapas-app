@@ -1,0 +1,33 @@
+name: Actualizar datos diariamente
+
+on:
+  schedule:
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
+      - name: Descargar datos
+        run: node scripts/update-data.js
+        continue-on-error: true
+      
+      - name: Configurar Git
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+      
+      - name: Push si hay cambios
+        run: |
+          if ! git diff --quiet; then
+            git add data.json
+            git commit -m "chore: actualizar restaurantes $(date +'%Y-%m-%d')"
+            git push
+          fi

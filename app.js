@@ -31,53 +31,59 @@ async function loadRestaurants() {
     try {
         console.log('Cargando restaurantes...');
 
-        // Usar CORS proxy para evitar problemas
-        const corsProxy = 'https://cors-anywhere.herokuapp.com/';
-        const targetUrl = 'https://www.detapasconchencho.es/mapa/';
-
-        // Intentar cargar sin proxy primero
-        let response;
-        try {
-            response = await fetch(targetUrl);
-        } catch (e) {
-            console.log('Intentando con CORS proxy...');
-            response = await fetch(corsProxy + targetUrl, {
-                headers: {
-                    'X-Requested-With': 'XMLHttpRequest'
+        // Estrategia 1: Si estamos en la página de mapa en vivo, usar window.DTCC_MAP directamente
+        if (window.DTCC_MAP && window.DTCC_MAP.points) {
+            console.log('✓ Usando datos desde window.DTCC_MAP (página en vivo)');
+            allRestaurants = window.DTCC_MAP.points;
+        } else {
+            // Estrategia 2: Intentar cargar desde data.json local
+            console.log('Intentando cargar data.json...');
+            try {
+                const response = await fetch('data.json');
+                if (response.ok) {
+                    const mapData = await response.json();
+                    allRestaurants = mapData.points || [];
+                    console.log('✓ Datos cargados desde data.json');
+                } else {
+                    throw new Error('data.json no disponible');
                 }
-            });
-        }
+            } catch (e) {
+                console.log('data.json no disponible, intentando desde web...');
 
-        const html = await response.text();
+                // Estrategia 3: Intentar cargar desde la web original
+                const targetUrl = 'https://www.detapasconchencho.es/mapa/';
+                const response = await fetch(targetUrl);
+                const html = await response.text();
 
-        // Crear un contexto para ejecutar el script
-        const doc = new DOMParser().parseFromString(html, 'text/html');
-        const scripts = doc.querySelectorAll('script');
+                // Buscar el script que contiene DTCC_MAP
+                const doc = new DOMParser().parseFromString(html, 'text/html');
+                const scripts = doc.querySelectorAll('script');
 
-        // Buscar el script que contiene los datos
-        let dataScript = null;
-        for (let script of scripts) {
-            if (script.textContent.includes('DTCC_MAP')) {
-                dataScript = script.textContent;
-                break;
+                let dataScript = null;
+                for (let script of scripts) {
+                    if (script.textContent.includes('DTCC_MAP')) {
+                        dataScript = script.textContent;
+                        break;
+                    }
+                }
+
+                if (!dataScript) {
+                    throw new Error('No se encontraron los datos del mapa en el sitio');
+                }
+
+                // Extraer JSON usando regex
+                const match = dataScript.match(/window\.DTCC_MAP\s*=\s*(\{[\s\S]*?\});/);
+                if (!match) {
+                    throw new Error('No se pudo parsear los datos del mapa');
+                }
+
+                const mapData = JSON.parse(match[1]);
+                allRestaurants = mapData.points || [];
+                console.log('✓ Datos cargados desde web');
             }
         }
 
-        if (!dataScript) {
-            throw new Error('No se encontraron los datos del mapa');
-        }
-
-        // Extraer los datos usando regex
-        const match = dataScript.match(/window\.DTCC_MAP\s*=\s*(\{[\s\S]*?\});/);
-        if (!match) {
-            throw new Error('No se pudo parsear los datos del mapa');
-        }
-
-        // Parsear JSON
-        const mapData = JSON.parse(match[1]);
-        allRestaurants = mapData.points || [];
-
-        console.log(`Cargados ${allRestaurants.length} restaurantes`);
+        console.log(`✓ Cargados ${allRestaurants.length} restaurantes`);
 
         // Extraer zonas y categorías únicas
         allRestaurants.forEach(r => {
@@ -91,6 +97,8 @@ async function loadRestaurants() {
             }
         });
 
+        console.log(`Zonas encontradas: ${allZones.size}, Categorías: ${allCategories.size}`);
+
         // Llenar dropdowns
         populateFilters();
 
@@ -99,6 +107,7 @@ async function loadRestaurants() {
 
     } catch (error) {
         console.error('Error cargando restaurantes:', error);
+        console.log('Usando datos de demostración...');
 
         // Mostrar datos de demo si hay error
         loadDemoData();
@@ -158,7 +167,7 @@ function loadDemoData() {
     // Mostrar mensaje
     const latestContent = document.getElementById('latestArticleContent');
     if (latestContent) {
-        latestContent.innerHTML = '<p style="color: #E74C3C;">⚠️ Usando datos de demostración. Cuando se publique en GitHub Pages, los datos se cargarán en tiempo real.</p>';
+        latestContent.innerHTML = '<p style="color: #E74C3C;">⚠️ Usando datos de demostración. Ejecuta fetch-data.js para obtener todos los 678 restaurantes reales.</p>';
     }
 }
 

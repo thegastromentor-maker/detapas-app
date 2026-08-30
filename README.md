@@ -4,7 +4,7 @@ Una Progressive Web App (PWA) para descubrir los mejores bares de tapas en Sevil
 
 ## Características
 
-- 🗺️ **Mapa interactivo** con más de 678 establecimientos
+- 🗺️ **Mapa interactivo** con establecimientos
 - 🔍 **Buscador** por zona y categoría de comida
 - 📰 **Último artículo** publicado en la web
 - 📱 **Instalable** en pantalla de inicio (iOS y Android)
@@ -56,6 +56,37 @@ git push -u origin main
 - `app.js` - Lógica principal (carga de datos, navegación, filtros)
 - `service-worker.js` - Service Worker para funcionalidad offline
 - `manifest.json` - Configuración de PWA
+- `data.json` - Datos de restaurantes
+
+## Datos
+
+La app intenta cargar datos en este orden:
+
+1. **data.json** - Archivo local con todos los restaurantes (más rápido y confiable)
+2. **window.DTCC_MAP** - Si estás en https://www.detapasconchencho.es/mapa/
+3. **Fetch desde web** - Intenta descargar de la web original
+4. **Datos de demostración** - Restaurantes de ejemplo como fallback
+
+### Actualizar con datos reales (678 establecimientos)
+
+**Desde tu Mac:**
+
+```bash
+cd "Desktop/detapas-app 4"
+node fetch-data.js
+```
+
+Este script descargará todos los 678 restaurantes y actualizará `data.json`.
+
+**Luego sube los cambios a GitHub:**
+
+```bash
+git add data.json
+git commit -m "Update: Todos los 678 restaurantes"
+git push origin main
+```
+
+En 2-3 minutos, tu app en GitHub Pages tendrá los datos actualizados.
 
 ## Tecnologías
 
@@ -64,13 +95,6 @@ git push -u origin main
 - Vanilla JavaScript
 - Leaflet.js (mapas)
 - Service Workers (offline)
-
-## Datos
-
-Los datos se obtienen directamente desde:
-- https://www.detapasconchencho.es/mapa/
-
-La app accede a los datos en tiempo real cada vez que se abre, garantizando que siempre tengas la información más actualizada.
 
 ## Licencia
 
